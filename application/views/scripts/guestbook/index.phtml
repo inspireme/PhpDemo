@@ -1,0 +1,49 @@
+
+<script type="text/javascript">
+    <?php if (!empty($this->msg) ): ?>
+        alert("<?php echo  $this->msg ?>");
+    <?php endif ?>
+</script>
+
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Guestbook</b> and script/action name <b>index</b></p>
+        
+        <p><a href="<?php echo $this->url(
+    array(
+        'controller' => 'guestbook',
+        'action'     => 'sign'
+    ),
+    'default',
+    true) ?>">Add a Guestbook</a></p>
+
+Guestbook Entries: <br />
+<table  class="block">
+    <tr ><td>email</td><td>comment</td><td>createtime</td><td>オペレーション</td></tr>
+    <?php foreach ($this->entries as $entry): ?>
+    <tr>
+    <td><?php echo $this->escape($entry->email) ?></td>
+    <td><?php echo $this->escape($entry->comment) ?></td>
+    <td><?php echo $this->escape($entry->created) ?></td>
+    <td><a href="<?php echo $this->url(
+        array(
+            'controller' => 'guestbook',
+            'action'     => 'sign',
+            'id' =>  $this->escape($entry->id) 
+        ),
+        'default',
+        true) ?>">update</a>&nbsp;<a href="<?php echo $this->url(
+        array(
+            'controller' => 'guestbook',
+            'action'     => 'delete',
+            'id' =>  $this->escape($entry->id) 
+        ),
+        'default',
+        true) ?>">delete</a>
+    </td>
+    </tr>
+    <?php endforeach ?>    
+</table>
+</div>
+
+<br /><br />

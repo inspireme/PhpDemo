@@ -1,0 +1,33 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Guestbook</b> and script/action name <b>sign</b></p>
+        
+ <form id="bookForm" action="/guestbook/save"  method="post" encoding="application/x-www-form-urlencoded">       
+        <p><a href="<?php echo $this->url(
+    array(
+        'controller' => 'guestbook',
+        'action'     => 'save'
+    ),
+    'default',
+                true) ?>" onclick="javascript:this.form.submit();">Save Guestbook</a>
+            &nbsp;<a href="<?php echo $this->url(
+    array(
+        'controller' => 'guestbook',
+        'action'     => 'index'
+    ),
+    'default',
+    true) ?>">Back to Booklist</a></p>
+
+Guestbook Entrie: <br />
+
+    <input id="id" name="id" value="<?php echo $this->escape($this->entry->id) ?>" type='hidden'>
+<table  class="block">
+    <tr ><td>email</td><td><input id="email" name="email" type="text" value="<?php echo $this->escape($this->entry->email) ?>"></td></tr>
+    <tr ><td>comment</td><td><input id="comment" name="comment" type="text" value="<?php echo $this->escape($this->entry->comment) ?>"></td></tr>
+    <tr ><td>createtime</td><td><input id="created" name="created" type="text" value="<?php echo $this->escape($this->entry->created) ?>" readonly="readonly"></td></tr>
+</table>
+    <input id="submit" name="submit" value="save" type='submit'>
+</form>
+</div>
+
+<br /><br />
